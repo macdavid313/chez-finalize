@@ -1,9 +1,6 @@
 ;;;; tests.ss
 (import (chezscheme) (finalize))
 
-(define-record-type (foo mk-foo foo?)
-  (fields x))
-
 (define-record-type (c-u8-array mk-c-u8-array c-u8-array?)
   (fields ptr len))
 
