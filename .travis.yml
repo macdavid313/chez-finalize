@@ -1,0 +1,34 @@
+language: c
+
+sudo: required
+
+os:
+  - linux
+  - osx
+
+env:
+  global:
+    - CHEZSCHEMELIBDIRS="${TRAVIS_BUILD_DIR}:${TRAVIS_BUILD_DIR}/thunderchez"
+  
+addons:
+  homebrew:
+    update: true
+    packages:
+      - aria2
+      - ncurses
+      - ossp-uuid
+  apt:
+    update: true
+    packages:
+      - libncurses5-dev
+      - libgmp-dev
+      - libffi-dev
+      - uuid-dev
+      - zlib1g-dev
+      - aria2
+
+before_install:  
+  - /bin/bash -e ./.travis/install_chez
+
+script:
+  - scheme --script "${TRAVIS_BUILD_DIR}/tests.ss"
