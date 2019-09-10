@@ -16,7 +16,7 @@
 
 (define (make-c-u8-array lst)
   (let* ([len (length lst)]
-         [ptr (foreign-alloc (fx* (foreign-sizeof 'unsigned-8)))])
+         [ptr (foreign-alloc (fx* len (foreign-sizeof 'unsigned-8)))])
     (do ([lst lst (cdr lst)]
          [i 0 (fx1+ i)])
         ((fx=? i len))
